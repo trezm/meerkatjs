@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+var bs = require('../lib/bs');
+bs(var arguments = process.argv;)
