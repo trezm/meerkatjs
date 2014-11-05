@@ -1,12 +1,11 @@
 {
-    "name": "bootsoles-tools",
-    "description": "Generate models and controllers",
-    "main": "./lib/bs",
+    "name": "meerkatjs",
+    "description": "Adding version history to Mongoose",
     "author": "Pete Mertz",
-    "version": "0.1.4",
+    "version": "0.1.2",
     "repository": {
         "type": "git",
-        "url": "https://github.com/trezm/bootsoles-tools.git"
+        "url": "https://github.com/trezm/meerkatjs.git"
     },
     "main": "./lib/meerkat.js",
     "dependencies": {
@@ -20,6 +19,6 @@
     },
     "licenses": [{
         "type": "MIT",
-        "url": "https://github.com/trezm/bootsoles-tools/blob/master/LICENSE"
+        "url": "https://github.com/trezm/meerkatjs/blob/master/LICENSE"
     }]
 }
