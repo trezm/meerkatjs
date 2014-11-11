@@ -45,5 +45,5 @@ describe('Buffer Deltas', function() {
 		expect(thirdPostDiff).to.equal(third);
 		expect(secondPostDiff).to.equal(second);
 		expect(firstPostDiff).to.equal(first);
-	})
+	});
 })

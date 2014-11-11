@@ -135,4 +135,51 @@ describe('Mongoose Extensions', function() {
 			done();
 		})
 	})
+
+
+	it('should have a getVersion method on the model', function() {
+		var testModel = new TestModel();
+		expect(testModel).to.respondTo('getVersion');
+	});
+
+	it('shoould properly restore old versions', function(done) {
+		var testModel;
+		var originalTestField1 = 'Hello world';
+		var originalTestField2 = 42;
+		var targetVersionNumber = 1;
+
+		async.waterfall([
+			function(callback) {
+				var testModel = new TestModel();
+				testModel.testField1 = originalTestField1;
+				testModel.testField2 = originalTestField2;
+				testModel.save(function(error, results) {
+					callback(error, results);
+				});
+			},
+			function(results, callback) {
+				results.testField1 = 'Goodbye world';
+				results.save(function(error, results) {
+					callback(error, results);
+				});
+			},
+			function(results, callback) {
+				results.testField2 = 43;
+				results.save(function(error, results) {
+					testModel = results;
+					callback(error, results);
+				})
+			},
+			function(results, callback) {
+				results.getVersion(targetVersionNumber, function(error, results) {
+					callback(error, results);
+				});
+			}
+		], function(error, results) {
+			expect(results.testField1).to.equal(originalTestField1);
+			expect(results.testField2).to.equal(originalTestField2);
+			expect(results.versionNumber).to.equal(targetVersionNumber)
+			done();
+		})
+	})
 });
