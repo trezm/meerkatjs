@@ -178,7 +178,6 @@ describe('Mongoose Extensions', function() {
 		], function(error, results) {
 			expect(results.testField1).to.equal(originalTestField1);
 			expect(results.testField2).to.equal(originalTestField2);
-			expect(results.versionNumber).to.equal(targetVersionNumber)
 			done();
 		})
 	})
