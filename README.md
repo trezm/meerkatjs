@@ -13,7 +13,7 @@ Meerkat functions exactly like standard mongoose, but with the addition of a few
 - `<Mongoose Object>.currentVersionNumber`: The current version of the object, i.e. a model with 10 versions, currently on the 5th version will return 5.
 
 ### Deltas
-Meerkat stores information about changes in collections in separate tables, called Delta Collections.  When a Schema is created, it's actually split into two different schemas, a private schema, which is preceded by a `_`, i.e. `_testSchema` and a Delta schema, which is anteceded by `Delta`, i.e., `testSchemaDelta`.
+Meerkat stores information about changes in collections in separate tables, called Delta Collections.  When a Schema is created, it's actually split into two different schemas and a virtual schema.  The private schema, which is preceded by a `_`, i.e. `_testSchema`, stores the current information about the object.  The Delta schema, which is anteceded by `Delta`, i.e., `testSchemaDelta`, stores the version to version binary information about a collection.  The virtual schema provides a wrapper for all of this so it still acts as a normal mongoose object.
 
 Each time that a field is altered, it hits a virtual method in the resulting schema, `testSchema`, that calculates and sets the delta for that given field.
 
